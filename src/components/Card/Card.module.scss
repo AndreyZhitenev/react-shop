@@ -9,16 +9,28 @@
 
 	.plus {
 		cursor: pointer;
+		transition: box-shadow 0.2s ease-in-out;
+
+		&:hover {
+			box-shadow: 0 20px 35px rgba(0, 0, 0, 0.06);
+			transition: box-shadow 0.2s ease-in-out;
+		}
 	}
 
 	&:hover {
 		box-shadow: 0 20px 35px rgba(0, 0, 0, 0.06);
-		transform: translateY(-5px);
 	}
 
 	.favorite {
 		position: absolute;
 		cursor: pointer;
+		border-radius: 5px;
+		height: 32px;
+		transition: box-shadow 0.2s ease-in-out;
+		&:hover {
+			box-shadow: 0 20px 35px rgba(0, 0, 0, 0.06);
+			transition: box-shadow 0.2s ease-in-out;
+		}
 	}
 
 	span {
@@ -28,7 +40,7 @@
 	}
 
 	b {
-		font-size: 13px;
+		font-size: 15px;
 	}
 
 	h5 {

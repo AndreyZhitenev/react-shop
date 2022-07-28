@@ -1,7 +1,7 @@
-import axios from 'axios';
-import React from 'react';
-import Card from '../components/Card';
-import AppContext from '../context';
+import axios from "axios";
+import React from "react";
+import Card from "../components/Card";
+import AppContext from "../context";
 
 const Orders = () => {
 	const { onAddToFavorite, onAddToCart } = React.useContext(AppContext);
@@ -11,23 +11,23 @@ const Orders = () => {
 	React.useEffect(() => {
 		(async () => {
 			try {
-				const { data } = await axios.get('https://62b5e0e06999cce2e8fb9332.mockapi.io/orders');
+				const { data } = await axios.get("https://62e2ce15b54fc209b880c2ac.mockapi.io/orders");
 				setOrders(data.reduce((prev, obj) => [...prev, ...obj.items], []));
 				setIsLoading(false);
 			} catch (error) {
-				alert('Ошибка при запросе заказов');
+				alert("Ошибка при запросе заказов");
 				console.error(error);
 			}
 		})();
 	}, []);
 
 	return (
-		<div className='content p-40'>
-			<div className='d-flex align-center justify-between mb-40'>
+		<div className="content p-40">
+			<div className="d-flex align-center justify-between mb-40">
 				<h1>Мои заказы</h1>
 			</div>
 
-			<div className='d-flex flex-wrap'>
+			<div className="d-flex flex-wrap">
 				{(isLoading ? [...Array(8)] : orders).map((item, index) => (
 					<Card key={index} loading={isLoading} {...item} />
 				))}
