@@ -14,9 +14,13 @@
 
 .overlayVisible {
 	visibility: visible;
+	overflow-y: scroll;
+
 	opacity: 1;
 
 	.drawer {
+		overflow-y: scroll;
+
 		transform: translateX(0);
 	}
 }
@@ -42,5 +46,11 @@
 		overflow: auto;
 		margin-bottom: 20px;
 		flex: 1;
+	}
+}
+
+@media screen and (max-width: 640px) {
+	.drawer {
+		width: 100vw;
 	}
 }

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import axios from "axios";
 import { Route } from "react-router-dom";
 import Header from "./components/Header";
@@ -16,8 +16,10 @@ function App() {
 	const [searchValue, setSearchValue] = React.useState("");
 	const [cartOpened, setCartOpened] = React.useState(false);
 	const [isLoading, setIsLoading] = React.useState(true);
+	const [width, setWidth] = useState(4000);
 
 	React.useEffect(() => {
+		setWidth(document.querySelector("html").clientWidth);
 		(async () => {
 			try {
 				setIsLoading(true);
@@ -113,7 +115,7 @@ function App() {
 				setCartOpened,
 				setCartItems,
 			}}>
-			<div className="wrapper clear">
+			<div className={width > 768 ? "wrapper clear" : "wrapper clear ml-15 mr-15"}>
 				<Drawer
 					items={cartItems}
 					onClose={() => setCartOpened(false)}
@@ -131,6 +133,7 @@ function App() {
 						onAddToFavorite={onAddToFavorite}
 						onAddToCart={onAddToCart}
 						isLoading={isLoading}
+						favorites={favorites}
 					/>
 				</Route>
 				<Route path={process.env.PUBLIC_URL + "/favorites"} exact>
